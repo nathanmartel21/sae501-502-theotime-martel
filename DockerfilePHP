@@ -1,0 +1,5 @@
+FROM docker.io/library/php:8-fpm
+
+RUN docker-php-ext-install mysqli
+
+
