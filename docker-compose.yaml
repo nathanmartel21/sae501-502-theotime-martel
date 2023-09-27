@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  nginx:
+    image: docker.io/library/nginx:alpine
+    #build:
+      #context: .
+      #dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ../sae501-502-theotime-martel/website:/usr/share/nginx/html:z
+      - ../sae501-502-theotime-martel/website/Pages/configNGINX:/etc/nginx/conf.d:z
+    container_name: nginx
+
+    links:
+      - php
+
+  mysql:
+    image: mysql:latest  
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nathiotime
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql:z
+
+  php:
+    #image: php:8.2-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    container_name: php
+    volumes :
+      - ../sae501-502-theotime-martel/website:/usr/share/nginx/html:z
+
+volumes: 
+  db_data:
+
+
