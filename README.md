@@ -97,7 +97,7 @@ Furthermore, there is redundancy of this data through master/slave replication.
 
 First, clone the project from the Git repository :
 ```
-git clone https://scm.univ-tours.fr/22107454t/sae501-502-theotime-martel.git
+git clone https://github.com/nathanmartel21/sae501-502-theotime-martel.git
 ```
 Navigate to the project directory : 
 ```
